@@ -1,0 +1,69 @@
+<!-- pager for showing pages -->
+<ul>
+	<%
+	
+	var firstPage = 0;
+	var lastPage = pages.length-1;
+	var firstPageFormatted = MetacatUI.appView.commaSeparateNumber(firstPage+1),
+		currentPageFormatted = MetacatUI.appView.commaSeparateNumber(currentPage+1);
+
+	if(currentPage != firstPage){
+		print('<li><a id="results_prev_bottom">Prev</a></li>');
+	}
+	
+	
+	if(currentPage == firstPage){
+		print('<li class="active"><a class="pagerLink" page="', firstPage, '">', firstPageFormatted, '</a></li>');
+	}
+	else if(currentPage-1 == firstPage){
+		print('<li><a class="pagerLink" page="', firstPage, '">', firstPageFormatted, '</a></li>');
+		print('<li class="active"><a class="pagerLink" page="', currentPage, '">', currentPageFormatted, '</a></li>');
+	}
+	else if(currentPage-2 == firstPage){
+		print('<li><a class="pagerLink" page="', firstPage, '">', firstPageFormatted, '</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage-1, '">', (currentPage-1)+1, '</a></li>');
+		print('<li class="active"><a class="pagerLink" page="', currentPage, '">', currentPageFormatted, '</a></li>');
+	}
+	else if(currentPage-3 == firstPage){
+		print('<li><a class="pagerLink" page="', firstPage, '">', firstPageFormatted, '</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage-2, '">', MetacatUI.appView.commaSeparateNumber((currentPage-2)+1), '</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage-1, '">', MetacatUI.appView.commaSeparateNumber((currentPage-1)+1), '</a></li>');
+		print('<li class="active"><a class="pagerLink" page="', currentPage, '">', currentPageFormatted, '</a></li>');
+	}
+	else{
+		print('<li><a class="pagerLink" page="', firstPage, '">', firstPageFormatted, '</a></li>');
+		print('<li><a class="unactive">...</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage-2, '">', MetacatUI.appView.commaSeparateNumber((currentPage-2)+1), '</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage-1, '">', MetacatUI.appView.commaSeparateNumber((currentPage-1)+1), '</a></li>');
+		print('<li class="active"><a class="pagerLink" page="', currentPage, '">', currentPageFormatted, '</a></li>');	
+	}
+
+	if(currentPage == lastPage){
+		//Do nothing
+	}
+	else if(currentPage+1 == lastPage){
+		print('<li><a class="pagerLink" page="', currentPage+1, '">', MetacatUI.appView.commaSeparateNumber((currentPage+1)+1), '</a></li>');
+	}
+	else if(currentPage+2 == lastPage){
+		print('<li><a class="pagerLink" page="', currentPage+1, '">', MetacatUI.appView.commaSeparateNumber((currentPage+1)+1), '</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage+2, '">', MetacatUI.appView.commaSeparateNumber((currentPage+2)+1), '</a></li>');
+	}
+	else if(currentPage+3 == lastPage){
+		print('<li><a class="pagerLink" page="', currentPage+1, '">', MetacatUI.appView.commaSeparateNumber((currentPage+1)+1), '</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage+2, '">', MetacatUI.appView.commaSeparateNumber((currentPage+2)+1), '</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage+3, '">', MetacatUI.appView.commaSeparateNumber((currentPage+3)+1), '</a></li>');
+	}
+	else{
+		print('<li><a class="pagerLink" page="', currentPage+1, '">', MetacatUI.appView.commaSeparateNumber((currentPage+1)+1), '</a></li>');
+		print('<li><a class="pagerLink" page="', currentPage+2, '">', MetacatUI.appView.commaSeparateNumber((currentPage+2)+1), '</a></li>');
+		print('<li><a class="unactive">...</a></li>');
+		print('<li><a class="pagerLink" page="', lastPage, '">', MetacatUI.appView.commaSeparateNumber((lastPage)+1), '</a></li>');
+	}
+	
+
+	if(currentPage != lastPage){
+		print('<li><a id="results_next_bottom">Next</a></li>');
+		}
+	%>
+</ul>
+

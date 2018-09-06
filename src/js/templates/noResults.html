@@ -1,0 +1,15 @@
+<% 
+if(!fullName) var fullName = "This person";
+%>
+
+<p class="center">
+	<%=fullName%> hasn't submitted anything yet.
+</p>
+
+<% if(username){ %>
+	<div>
+		<p class="center">
+			<a class="btn btn-primary" href="<%= MetacatUI.root %>/submit">Submit data now</a>.
+		</p>
+	</div>
+<% } %>

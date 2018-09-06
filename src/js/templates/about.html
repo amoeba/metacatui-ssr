@@ -1,0 +1,214 @@
+<article id="About">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="text-left">
+        <h2>
+          <a name="about-the-knb"></a>
+          <i class="icon icon-leaf"></i>
+          About 
+        </h2>
+        <img class="pull-right" style="height: 150px;width: 150px; margin: 10px 40px 10px 20px" alt="Data underlies metadata" src="<%= MetacatUI.root %>/js/themes/knb/img/data-metadata-graphic.png?v=<%=window.metacatUIVersion%>">
+		<h3>Powered by rich, detailed metadata.</h3>
+        <p>
+          For scientists, this repository is an efficient way to share, discover, access and
+          interpret complex ecological data. Due to rich contextual
+          information provided with KNB data, scientists are able to integrate and 
+          analyze data with
+          less effort. The data originate from a highly-distributed set of
+          field stations, laboratories, research sites, and individual
+          researchers. The foundation of this repository is the rich, detailed metadata
+          provided by researchers that collect data, which promotes both
+          automated and manual integration of data into new projects.
+        </p>
+        
+        <h3>Open-source software.</h3>
+        <p>
+          As part of our effort, data management software is developed in a
+          free and open source manner, so other groups can build upon the tools.
+          This repository is powered by the Metacat data management system, and is
+          optimized for handling data sets described using the Ecological 
+          Metadata Language, but can store any XML-based metadata document.
+          <a href="<%= MetacatUI.root %>/tools">Learn more about the software behind this repository <i class="icon icon-double-angle-right"></i></a>
+        </p>
+      </div>
+    </div>
+    <hr/>
+    <div class="row-fluid">
+      <div class="text-left">
+        <h2>
+          <a name="getting-started"></a>
+          <i class="icon icon-cog"></i>
+          Getting Started
+        </h2>
+        <h3>
+          <a name="sharing-your-data"></a>
+          Storing and Sharing Your Research
+        </h3>
+		<p>Submitting your data is easy. Here are two ways to get started:</p>
+        <div class="row-fluid">
+          <figure class="thumbnail span5">
+          	<a href="<%= MetacatUI.root %>/submit">
+          		<img src="<%= MetacatUI.root %>/img/about-editor.png" alt="Online Data Registry Form"/>
+          	</a>
+          	<figcaption class="caption">
+          	    <h3>On the web</h3>
+          		<p>Upload your data on this website using a <a href="<%= MetacatUI.root %>/submit">simple online form</a>.</p>
+          		<p><a href="<%= MetacatUI.root %>/submit" class="btn btn-primary">Upload now</a></p>
+          	</figcaption>
+          </figure>
+          <figure class="thumbnail span5">
+          	<a href="<%= MetacatUI.root %>/tools/morpho">
+          		<img src="<%= MetacatUI.root %>/img/about-morpho.png" alt="Morpho Desktop Application"/>
+          	</a>
+          	<figcaption class="caption">
+          		<h3>On your desktop</h3>
+          		<p>Download the <a href="<%= MetacatUI.root %>/tools/morpho">Morpho desktop application</a>, which features a "wizard"-style step-by-step process to describe and package up your data.</p>
+          		<p><a href="<%= MetacatUI.root %>/tools/morpho" class="btn btn-primary">Download Morpho</a></p>
+          	</figcaption>
+          </figure>
+          <div class="clear"></div>
+          <p>
+	          If your project involves large numbers of
+	          files (hundreds to thousands), you may want to automate the creation
+	          of your metadata. This is certainly possible, and has been done in
+	          programs like Matlab, R, etc.
+          </p>
+        </div>
+        <a id="file-format"></a>
+        <h3>Use any file format.</h3>
+        <figure>
+        	<img src="<%= MetacatUI.root %>/img/about-fileformats.png" alt="File formats" />
+        	<figcaption class="footnote">Credit: Blugraphic.com</figcaption>
+        </figure>
+        <p>
+          While this repository supports the upload of any data file format, sharing data can
+          be greatly enhanced if you use ubiquitous, easy-to-read formats. For
+          instance, while Microsoft Excel files are commonplace, it's better to
+          export these spreadsheets to Comma Separated Values (CSV) text files,
+          which can be read on any computer without having Microsoft products
+          installed.
+        </p>
+        <p>        
+          To prepare for upload, it's good to have
+          your files in order. You might want to take a look at some <a
+          href="http://www.dataone.org/best-practices">best practices</a> for
+          <a href="http://dx.doi.org/10.1890/0012-9623-90.2.205">managing your
+          data files</a>. For a given project, perhaps you have 6 data files,
+          and one document that describes the methods that you used to collect
+          or analyze your data. Collect these files into a single directory,
+          and name them with short but descriptive names. Try to avoid spaces in
+          your file names, but rather use dashes "-" or underscores "_". 
+        </p>
+        <p>
+          For image files, use common formats like PNG, JPEG, TIFF, etc. Most
+          all browsers can handle these. If you use specialized software to
+          create your data, try to save you data in well-known formats. For
+          instance, GIS data can be exported to ESRI shapefiles, and data
+          created in Matlab or other matrix-based programs can be exported as
+          <a href="http://www.unidata.ucar.edu/software/netcdf/">NetCDF</a> (an
+          open binary format).
+        </p>     
+        <h3>
+          <a name="search-tips"></a>
+          Search for Data
+        </h3>
+        <p>
+        	Search for data <a href="<%= MetacatUI.root %>/data">here</a> and get helpful search tips on our <a href="<%= MetacatUI.root %>/help">help page</a>.
+        </p>
+      </div>
+    </div>
+    <hr/>
+    <div class="row-fluid">
+    	<h2>
+            <a name="using-the-knb"></a>
+            <i class="icon icon-quote-left"></i>
+            Licensing and Data Distribution
+        </h2>
+        <p>
+            As a tool dedicated to helping researchers
+            increase collaboration and the pace of science, this repository
+            needs certain rights to copy, store, and redistribute data.
+            By uploading data, metadata, and any other content to
+            this repository, you warrant that you have the rights to
+            the content and are authorized to do so under copyright
+            or any other right that might pertain to the content.
+            <a
+            href="http://www.bitlaw.com/copyright/database.html">Data
+            and facts themselves are not covered under copyright</a>
+            in the US and most countries, since facts in and of
+            themselves are not eligible for copyright. That said,
+            some associated metadata and some particular compilations
+            of data could potentially be covered by copyright in
+            some jurisdictions. Thus, by uploading content, you
+            grant this repository and UCSB all rights needed to copy, store,
+            redistribute, and share data, metadata, and any other
+            content under the access control rules that you specify.
+            By marking content as publicly available, you grant this 
+            repository, UCSB, and any other users the right to copy the
+            content and redistribute it to the public without restriction
+            under the terms of <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC-BY</a>.
+        </p>
+    </div>
+    <hr/>
+    <div class="row-fluid">
+    	<h2>
+          <a name="understanding-metadata"></a>
+          <i class="icon icon-file-text"></i>
+          Understanding metadata
+        </h2>
+        <p>
+          Metadata are ultimately "data about data" - the
+          contextual information needed to interpret a set of raw data
+          observations. They provide meaning to data, and are critical when it
+          comes to sharing, integrating, and analyzing data. Too often people
+          collect data for projects and leave them undocumented for years or
+          decades. These data, while potential of very high value, can become 
+          useless over time due to data entropy.
+        </p>
+        <p>
+          There are a number of resources available that help in understanding
+          metadata. A notable reference book is "Ecological Data: Design,
+          Management and Processing", edited by William Michner and James Brunt
+          <a href="http://books.google.com/books?isbn=1444311395">(ISBN
+          1-444-31139-5)</a>. This book has an excellent section on metadata,
+          and the idea of data entropy over the course of a scientist's career.
+          Likewise, researchers at the National Center for Ecological Analysis
+          and Synthesis <a href="http://nceas.ucsb.edu">(NCEAS)</a> wrote an <a
+          href="http://dx.doi.org/10.1890/0012-9623(2005)86[158:MTVOED]2.0.CO;2"
+          >excellent primer</a> on understanding and using EML, entitled
+          "Maximizing the value of ecological data with structured metadata: an
+          introduction to Ecological Metadata Language (EML) and principles for
+          metadata creation".
+        </p>
+        <p>
+          The two resources above should help in understanding metadata, and
+          making the generation of high quality metadata a part of your
+          scientific workflow. 
+        </p>
+   </div>
+   <hr/>
+  <div class="row-fluid">
+   	<div class="text-left">
+   		<h2>
+   			<i class="icon icon-picture"></i>
+   			<a name="credits">Credits</a>
+   		</h2>
+   		<p>
+   			The photographs used in this data catalog were provided by:
+   			<ul class="indent plain-list">
+   				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@whale?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Matthew Smith"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">Matthew Smith</span></a></li>
+   				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@valin3?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Valérie Ungerer"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">Valérie Ungerer</span></a></li>
+   				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@jtkyber1?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Joey Kyber"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">Joey Kyber</span></a></li>
+   				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@firstmohican?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Andrea Reiman"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">Andrea Reiman</span></a></li>
+   				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@christoffere?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Christoffer Engström"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">Christoffer Engström</span></a></li>
+   				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@tiphaine?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Tiphaine"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">Tiphaine</span></a></li>
+				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@davidkovalenkoo?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from David Kovalenko"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">David Kovalenko</span></a></li>
+   				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@jessedo81?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from jesse orrico"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">jesse orrico</span></a></li>
+   				<li><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;" href="https://unsplash.com/@jeremythomasphoto?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Jeremy Thomas"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewBox="0 0 32 32"><title></title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">Jeremy Thomas</span></a></li>
+   			</ul>
+   		</p>
+   	</div>
+   </div>
+  </div>
+</article>
+

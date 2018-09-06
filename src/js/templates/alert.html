@@ -1,0 +1,34 @@
+<%
+if(classes === undefined){
+	var classes = "";
+}
+if(containerClasses === undefined){
+	var containerClasses = "";
+}
+if(msg === undefined){
+	var msg = "";
+}
+if(includeEmail === undefined){
+	if((classes.indexOf("warning") > -1) || (classes.indexOf("error") > -1))
+		var includeEmail = true;
+	else
+		var includeEmail = false;
+}
+var email = "";
+if(includeEmail && MetacatUI.appModel.get("emailContact")){
+	if(typeof emailOptions == "undefined" || !emailOptions) var emailOptions = "";
+	
+	email = "<span class='webmaster-email'><i class='icon-envelope-alt icon'></i>Need help? Email us at " + 
+	"<a href='mailto:" + MetacatUI.appModel.get('emailContact') + emailOptions + "'>" + MetacatUI.appModel.get('emailContact') + "</a></span>";
+}
+%>
+
+<div class="alert-container <%=containerClasses%>">
+	<div class="alert <%=classes%>">
+	<%=msg%>
+	<%=email%>
+	<% if(typeof remove != "undefined" && remove){ %>
+			<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<% } %>
+	</div>
+</div>

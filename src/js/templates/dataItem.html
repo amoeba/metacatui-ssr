@@ -1,0 +1,105 @@
+﻿<!-- Icon column -->
+<% if ( typeof type !== "undefined" && type !== null && type == "Metadata" ) { %>
+    <% var indentFolder = nodeLevel * 40; %>
+    <td class="type-icon">
+        <i class="icon icon-chevron-down open toggle-rows" style="padding-left:<%=indentFolder %>px"></i>
+        <i class="icon-large icon-folder-open"></i></td>
+
+<% } else { %>
+    <% var indentFile = (nodeLevel + 1) * 40; %>
+    <td class="type-icon"><i class="icon-large icon-file" style="padding-left:<%=indentFile %>px"></i></td>
+
+<% } %>
+
+<!-- Files column -->
+
+<td class="name" title="Click to rename" >
+    <% if(uploadStatus != "l" && uploadStatus != "p"){ %>
+    	<div contenteditable="true">
+    <% } else { %>
+    	<div>
+    <% } %>
+	        <% if (typeof title != "undefined" && title && title.length) { %>
+	            <%= title %>
+	        <% } else if ( typeof fileName != "undefined" && fileName) { %>
+	            <%= fileName %>
+	        <% } else if(type == "Metadata"){ %>
+	            Untitled dataset
+	        <% } else { %>
+	            <%= id %>
+	        <% } %>
+    </div>
+</td>
+
+<!-- Size column -->
+<% if ( typeof sizeStr != "undefined" && sizeStr ) { %>
+    <td class="size"><%= sizeStr %></td>
+
+<% } else {%>
+    <td class="size"><%= size %></td>
+
+<% } %>
+<!-- Type column -->
+<% if (type && type != "Metadata") { %>
+    <td class="type"><%= type %></td>
+<% } else { %>
+    <td class="type"></td>
+
+<% } %>
+<!-- Guide or Status column -->
+<td class="status">
+	<%  if( uploadStatus == "p" ){ %>
+		<div class="progress progress-striped active">
+			<div class="bar" style="width: <%=uploadProgress%>%;"></div>
+		</div>
+	<% } else if( (!uploadStatus || uploadStatus == "c" || uploadStatus == "q") && type != "Metadata" && numAttributes == 0 ) { %>
+		<i class="icon icon-circle-blank warning icon-large"></i>
+	<% } else if( type != "Metadata" && numAttributes > 0 && hasInvalidAttribute ) { %>
+		<i class="icon icon-exclamation-sign danger icon-large"></i>
+	<% } else if( type != "Metadata" && numAttributes > 0 && !hasInvalidAttribute && entityIsValid ) { %>
+		<i class="icon icon-ok-circle success icon-large"></i>
+	<% } else if( type != "Metadata" && !entityIsValid ) { %>
+		<i class="icon icon-exclamation-sign danger icon-large"></i>
+	<% } else if( uploadStatus == "c" ) { %>
+		<i class="icon icon-ok-circle success icon-large"></i>
+	<% } else if( uploadStatus == "e" ) { %>
+		<i class="icon icon-exclamation-sign danger error icon-large"></i>
+	<% } else if( uploadStatus == "l" && type != "Metadata"){ %>
+		<i class="icon icon-circle-blank icon-large"></i>
+	<% } %>
+</td>
+
+<!-- Button column -->
+<td class="controls">
+        <% if ( typeof formatType !== "undefined" && formatType !== null && formatType.toLowerCase() === "metadata" ) { %>
+
+          <input class="file-upload" type="file" multiple style="display:none; height: 0px; width: 0px" / >
+
+          <button type="button" class="addFiles btn btn-primary" title="Add Files to this dataset">
+              <i class="icon icon-large icon-plus icon-on-left"></i>
+              <span>Add Files</span>
+          </button>
+
+        <% }
+        else { %>
+
+         <div class="btn-group">
+           <% if( hasInvalidAttribute || !entityIsValid ){ %>
+             <button class="btn edit error">Describe</button>
+           <%  } else if( (!uploadStatus || uploadStatus == "c" || uploadStatus == "q") && type != "Metadata" && numAttributes == 0 ){ %>
+    			  <button class="btn edit warning" title="Describe this file and the data in it">Describe</button>
+    			 <% } else { %>
+    			 	<button class="btn edit" title="Describe this file and the data in it">Describe</button>
+    			 <% } %>
+
+    			 <button class="btn dropdown-toggle" data-toggle="dropdown">
+             <span class="caret"></span>
+    			 </button>
+
+    			 <ul class="dropdown-menu">
+    			   <li><a href="" class="remove removeFiles" title="Remove this file from the dataset">Remove</a></li>
+    			 </ul>
+			   </div>
+
+        <% } %>
+</td>

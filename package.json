@@ -1,0 +1,30 @@
+{
+  "name": "metacatui",
+  "version": "1.0.0",
+  "description": "- **Author**: Matthew B. Jones, Chris Jones, Ben Leinfelder, Lauren Walker, Bryce Mecum, Peter Slaughter ([NCEAS](http://www.nceas.ucsb.edu)) - **License**: [Apache 2](http://opensource.org/licenses/Apache-2.0) - [Package source code on Github](https://github.com/NCEAS/metacatui) - [**Submit Bugs and feature requests**](https://github.com/NCEAS/metacatui/issues) - [Task Board](https://waffle.io/NCEAS/metacatui) - Discussion list: metacat-dev@ecoinformatics.org",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NCEAS/metacatui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NCEAS/metacatui/issues"
+  },
+  "homepage": "https://github.com/NCEAS/metacatui#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "fetch": "^1.1.0",
+    "mustache": "^2.3.2",
+    "node-fetch": "^2.2.0"
+  }
+}

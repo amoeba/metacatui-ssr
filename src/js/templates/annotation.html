@@ -1,0 +1,83 @@
+<div class="btn-group" >
+
+<% if (concept) {
+%>
+	<button data-id="<%= annotation.id %>" 
+		class="hover-proxy ellipsis annotation tag btn <% if (annotation.reject) { print(' warning') } %>" 
+		type="button"
+		title="<%=concept.label %>">
+		<%=concept.label %>
+	</button>
+<%
+} else if (annotation.tags[0]) {
+%>
+		<button data-id="<%= annotation.id %>" 
+			class="hover-proxy popover-this ellipsis btn <% if (annotation.reject) { print(' btn-warning') } %>" 
+			type="button"
+			title="<%=annotation.tags[0] %>"
+			>
+			#<%=annotation.tags[0].split("#")[1] %>
+		</button>
+		
+<%
+}
+%>
+
+	<button type="button" class="btn btn-default dropdown-toggle annotation-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    	<span class="caret"></span>
+	</button>
+  <ul class="dropdown-menu">
+  
+<%
+if (canEdit && !annotation.reject) {
+%>
+	<li>
+
+		<a class="annotation-flag tooltip-this" 
+			data-id="<%= annotation.id %>"
+			data-trigger="hover"
+			data-title="Flag as incorrect"
+		>
+		Flag as incorrect
+		</a>
+	</li>
+<% } else if(canEdit && annotation.reject){ %>
+	<li>
+		<a class="annotation-flag tooltip-this" 
+			data-id="<%= annotation.id %>"
+			data-trigger="hover"
+			data-title="Mark as correct"
+		>
+		Mark as correct
+		</a>
+	</li>
+
+<% } %>
+<%
+if (canEdit) {
+%>
+	<li>
+		<a class="annotation-delete tooltip-this" 
+			data-id="<%= annotation.id %>"
+			data-trigger="hover"
+			data-title="Delete this annotation"
+		>
+		Delete
+		</a>
+	</li>
+	<li role="separator" class="divider"></li>
+	
+<% } %>  
+	<li>
+		<a>Find other datasets with Measurement:</a>
+		<div class="tree-container" 
+			data-id="<%= annotation.id %>"
+			data-concept-uri="<%= concept.value %>"
+			data-concept-label="<%= concept.label %>"
+			data-concept-description="<%= concept.desc %>"
+		>
+		</div>
+	</li>
+	</ul>
+	
+</div>

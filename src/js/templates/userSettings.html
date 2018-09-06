@@ -1,0 +1,203 @@
+<section id="user-settings" class="row-fluid section" data-section="settings">
+<% if(!MetacatUI.appModel.get("userProfiles")){ %>
+	<h1>My Account</h1>
+<% } %>
+
+<% var welcomeName = firstName || fullName || ""; %>
+<h3>Welcome, <%=welcomeName%></h3>
+	
+	<% if(MetacatUI.appModel.get("userProfiles")){ %>
+	<div class="panel panel-default span3">
+	  <div class="panel-heading">
+	  	Settings
+	  </div>
+	 	<ul class="list-group">
+	    	<li class="list-group-item active subsection-link" data-section="account"><a href="#" class="subsection-link" data-section="account">My account</a></li>
+	    	<li class="list-group-item subsection-link" data-section="groups"><a href="#" class="subsection-link" data-section="groups">Groups</a></li>
+	    	<li class="list-group-item subsection-link" data-section="token"><a href="#" class="subsection-link" data-section="token">Authentication Token</a></li>
+	  	</ul>
+	</div>
+	
+	<div class="span8 subsection" data-section="account">
+					
+			<div id="registered-user-container" class="panel panel-default" data-subsection="edit-account">
+			  <div class="panel-heading">
+			  	<h4 class="panel-title">Edit information</h4>
+			  </div>
+			  <div class="panel-body content" id="identity-mod-container">
+			  	<form>
+			  		<div class="form-group">
+			  			<label class="control-group span2">Username</label>
+			  			<span class="span10" id="mod-username"><%=usernameReadable%></span>
+			  		</div>
+				  	<div class="form-group">
+				  		<label class="control-group span2" for="mod-givenName">First name</label>
+					  	<input class="input-large form-control" type="text" placeholder="First name" name="mod-givenName" id="mod-givenName">
+				  	</div>
+				  	<div class="form-group">
+				  		<label class="control-group span2" for="mod-familyName">Last name</label>
+					  	<input class="input-large form-control" type="text" placeholder="Last name" name="mod-familyName" id="mod-familyName">
+				  	</div>
+				  	<div class="form-group">
+				  		<label class="control-group span2" for="mod-email">Email</label>
+					  	<input class="input-large form-control" type="text" placeholder="Email" name="mod-email" id="mod-email">
+					  	<span class="help-block"></span>
+				  	</div>
+				  	<div class="form-group">
+				  		<div class="span2"></div>
+				  		<button class="btn" id="mod-save-btn">Save</button>
+				  	</div>				  	
+				</form>
+			  </div>
+			</div>
+			
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			  	<h4 class="panel-title">My Other Accounts</h4>
+			  </div>
+			  <div class="panel-body">
+			  	<p>
+				 	If you have uploaded data with another account(s), you can link your accounts together so that you can log in with just one and manage <strong>all</strong> your data.
+				</p>
+			  	<div id="identity-alert-container"></div>
+			  	<div id="identity-list-container"></div>
+			   
+			   <div class="panel panel-default" data-subsection="add-account">
+				  <div class="panel-heading">
+				  	<h4 class="panel-title">Add Another Account</h4>
+				  </div>
+				  <div class="panel-body" id="identity-request-container">
+				  	<div id="request-alert-container"></div>
+				  	<form>
+					  	<div class="input-append">
+					  		<label for="map-request-field">Search by username, email, or name OR enter a full username below.</label>
+						  	<input class="input-xlarge account-autocomplete" type="text" placeholder="Username or Name (cn=me, o=my org...)" id="map-request-field">
+							<button class="btn" id="map-request-btn"><i class="icon-plus"></i></button>
+					  	</div>
+					</form>
+				  </div>
+				</div>
+				
+				<div class="panel panel-default" data-subsection="pending-accounts">
+				  <div class="panel-heading">
+				  	<h4 class="panel-title" id="pending-list-heading">Pending Requests</h4>
+				  </div>
+				  <div class="panel-body"> 
+					  <div id="pending-alert-container"></div>
+				 	  <div id="pending-list-container"></div>
+				  </div>
+			   </div>
+		   
+			  </div>
+			</div>
+	</div>
+	
+	<div class="span8 subsection" data-section="groups">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<h4 class="panel-title">My Groups</h4>
+		  </div>
+		  <div class="panel-body">
+		  		<p>Manage access and permissions to your data with groups. 
+		  		You can grant multiple users permission to edit, publish, or 
+		  		archive your data by assigning permissions via the group (instead of assigning permissions individually). 
+		  		For example, create a group and grant all members permission to access a private data set before publication.
+		  		Or create a group of your collaborators so that members can edit each other's data sets.</p>
+		  		<div id="group-list-container"></div>
+		  		<div class="panel panel-default" id="add-group-container">
+		  			<div class="panel-heading">
+		  				<a href="#" class="toggle-slide" data-slide-el="add-group-form-container"><i class="icon icon-plus"></i> Add a new group</a>
+		  			</div>
+		  			<div class="panel-body hidden" id="add-group-form-container">
+		  				<div id="add-group-alert-container"></div>
+		  			 	<form>
+		  			 		<div class="form-group">
+			  			 		<label for="name" class="control-group span3">Group Name</label>
+				  				<input type="text" name="name" id="add-group-name" maxlength="50" minlength="1" class="input-xlarge" />
+				  				<span class="subtle help-text">Choose wisely; you cannot change this name later.</span>
+				  				<div id="group-name-notification-container" class="form-feedback"></div>
+			  				</div>
+				  			
+			  				<ul class="list-group member-list">
+			  				</ul>
+			  				
+			  				<input type="submit" value="Create Group" class="btn btn-primary" id="add-group-submit"/>
+			  			</form>
+		  			</div>
+			  	</div> 
+		  </div>
+		</div>
+	</div>
+	<div class="span8 subsection active" data-section="token">
+	<% } 
+	else {
+	%>
+	<div class="span12 subsection active" data-section="token">
+	<% } %>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<h4 class="panel-title">My authentication token</h4>
+		  </div>
+		  <div class="panel-body">
+		  	<h5>Use your DataONE authentication token to upload data</h5>
+		  	<p>
+			  	Your authentication token is a unique string of characters that identifies a person submitting, updating, or accessing data.
+			  	Copy/paste your authentication token into an application that supports DataONE to manage your account.
+			</p> 
+		  	<p>
+				<span class="danger strong">Please be careful to safeguard this token.</span> Anyone with access to it can access content in DataONE as you. Be careful to not add this token to any published 
+				scripts or documents. This token will expire after a certain time period after which you will need to get a new one here.
+			</p>
+		  	<div>
+		  		<div id="token-generator-container"></div>
+		  		<a class="token-generator btn" id="token-generator-button">Renew authentication token</a>
+		  	</div>
+		  </div>
+		</div>	
+		
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<h4 class="panel-title">Applications that support DataONE authentication tokens</h4>
+		  </div>
+	   	  <div class="panel-body">
+	   	  		<p>To upload data in the DataONE network: choose a Member Node to host your data and an app that supports DataONE.</p>
+   	  			
+   	  			<a href="https://www.dataone.org/current-member-nodes" target="_blank">See the list of DataONE Member Nodes <i class="icon icon-double-angle-right"></i></a>
+   	  			<!--  <div class="media">
+   	  				<div class="media-left">
+	   	  				<img src="<%= MetacatUI.root %>/img/morpho-image.png" class="media-object" width="100" />
+	   	  			</div>
+   	  				<div class="media-body">
+	   	  				<h5>Morpho <em class="badge">Coming soon </em></h5>
+	   	  				<p>Morpho is an open source metadata editor for Ecological Metadata Language (EML). 
+	   	  				Morpho can currently be used to submit data and metadata to a Member Node which runs Metacat, 
+	   	  				using the Metacat interfaces in Morpho. 
+	   	  				<a href="https://knb.ecoinformatics.org/about/morpho">Learn more about Morpho and download <i class="icon icon-double-angle-right"></i></a>
+	   	  				</p>
+   	  				</div>
+   	  			</div>
+   	  			-->
+   	  			<div class="media">
+   	  				<div class="media-left">
+		   	  			<a href="https://github.com/DataONEorg/rdataone"><img src="<%= MetacatUI.root %>/img/rDataONE-logo-128px.png" class="media-object" width="100" /></a>
+		   	  		</div>
+	   	  			<div class="media-body">
+		   	  			<h5><a href="https://github.com/DataONEorg/rdataone">DataONE R</a></h5>
+		   	  			<p>The DataONE client for R supports DataONE authentication tokens in its latest 2.0 release.
+		   	  			<a href="https://github.com/DataONEorg/rdataone">Learn more about DataONE R <i class="icon icon-double-angle-right"></i></a></p>
+		   	  		</div>
+			   	 </div>
+			   	 <div class="media">
+   	  				<div class="media-left">
+		   	  			<a href="https://github.com/DataONEorg/matlab-dataone"><img src="<%= MetacatUI.root %>/img/matlab-dataone.png" class="media-object" width="100" /></a>
+		   	  		</div>
+	   	  			<div class="media-body">
+		   	  			<h5><a href="https://github.com/DataONEorg/matlab-dataone/releases">Matlab DataONE Toolbox</a></h5>
+		   	  			<p>A Matlab Toolbox that provides functions to interact with data repositories that implement the DataONE service API. The toolbox also includes client-side functions for managing provenance (the history) of derived data products.
+		   	  			<a href="https://github.com/DataONEorg/matlab-dataone/releases">Learn more  <i class="icon icon-double-angle-right"></i></a></p>
+		   	  		</div>
+			   	 </div>
+		  </div>
+		</div>  
+	</div>
+</section>

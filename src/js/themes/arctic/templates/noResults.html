@@ -1,0 +1,22 @@
+<% 
+if(!fullName) var fullName = "This person";
+%>
+
+<p class="center">
+	<%=fullName%> hasn't submitted anything yet.
+</p>
+
+<% if(username){ %>
+	<div>
+		<p class="center">
+			<a class="btn btn-primary" href="<%= MetacatUI.root %>/submit">Submit data now</a>.
+		</p>
+		<h3>Where are my data sets?</h3>
+		<p>If you are a previous ACADIS Gateway user, you will need to take additional steps to access your data sets 
+		in the new NSF Arctic Data Center.</p>
+		<p><a class="pointer" href="mailto:support@arcticdata.io">Send us a message at support@arcticdata.io</a> with your old ACADIS Gateway username 
+		or and your ORCID identifier (<%=MetacatUI.appUserModel.get("username")%>) and we will help.</a></p>
+	</div>
+	
+<% } %>
+
