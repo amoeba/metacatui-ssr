@@ -58,24 +58,24 @@ function buildDatasetScriptTag (json) {
  * @returns TODO
  */
 async function generateResponse (path) {
-  if (datasetRegex.test(path)) {
-    const path_parts = path.split("/view/")
-
-    // Fall back to returning the template if we don't parse a PID from the path
-    if (path_parts.length != 2 || path_parts[1].length == 0) {
-      return template;
-    }
-
-    const pid = path_parts[1];
-    const query_result = await query(pid, buildDatasetScriptTag);
-
-    return parts[0] + 
-      query_result + 
-      "</head>" + 
-      parts[1];
-  } else {
+  if (!datasetRegex.test(path)) {
     return template;
   }
+  
+  const path_parts = path.split("/view/")
+
+  // Fall back to returning the template if we don't parse a PID from the path
+  if (path_parts.length != 2 || path_parts[1].length == 0) {
+    return template;
+  }
+
+  const pid = path_parts[1];
+  const query_result = await query(pid, buildDatasetScriptTag);
+
+  return parts[0] + 
+    query_result + 
+    "</head>" + 
+    parts[1];
 }
 
 module.exports = {
