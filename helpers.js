@@ -33,7 +33,8 @@ async function query (pid, callback) {
   return json;
 }
 /**
- * Create a stringHTML str<script> element
+ * Create a <script> element with Schema.org/Dataset JSON-LD in it
+ * 
  * @param  {Object} json - TODO
  * 
  * @returns {string} TODO
@@ -50,9 +51,13 @@ function buildDatasetScriptTag (json) {
     "name": json.response.docs[0].title
   }
 
-  return '<script type="application/ld+json">' + JSON.stringify(jsonld) + '</script>';
+  return '<script type="application/ld+json">' + 
+    JSON.stringify(jsonld) + 
+    '</script>';
 }
 /**
+ * Dynamically generate the appropriate response to send back to the client
+ * 
  * @param  {string} path - TODO
  * 
  * @returns TODO
@@ -61,7 +66,7 @@ async function generateResponse (path) {
   if (!datasetRegex.test(path)) {
     return template;
   }
-  
+
   const path_parts = path.split("/view/")
 
   // Fall back to returning the template if we don't parse a PID from the path
