@@ -1,5 +1,3 @@
-// TODO: Verify I properly made the server non-blocking
-
 const express = require('express')
 const morgan = require('morgan');
 require('express-yields');
@@ -12,7 +10,6 @@ app.use(express.static(__dirname + "/src"));
 const helpers = require('./helpers');
 const port = process.env.PORT || 3000;
 
-  const start = new Date();
 app.get('*', async (req, res) => {
   const path = req._parsedOriginalUrl.path;
 
@@ -20,4 +17,6 @@ app.get('*', async (req, res) => {
   await res.send(response);
 });
 
-app.listen(port, () => console.log('MetacatUI SSR app listening on port ' + port + '!'))
+app.listen(port, () => {
+  console.log('MetacatUI SSR app listening at http://localhost:' + port + '!')
+});
