@@ -1,8 +1,11 @@
 // TODO: Verify I properly made the server non-blocking
 
 const express = require('express')
+const morgan = require('morgan');
 require('express-yields');
+
 const app = express();
+app.use(morgan('combined'))
 app.use(express.static(__dirname + "/src"));
 
 // Config & globals
@@ -13,9 +16,6 @@ const port = process.env.PORT || 3000;
 app.get('*', async (req, res) => {
   const path = req._parsedOriginalUrl.path;
 
-    .then(() => {
-      const elapsed = Number.parseFloat((new Date() - start) / 1000).toPrecision(4)
-      console.log('[' + new Date().toISOString() + '] [' + res.statusCode + '] ' + req.url + ' (' + elapsed + 's)');
   const response = await helpers.generateResponse(path);
   await res.send(response);
 });
