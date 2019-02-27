@@ -26,12 +26,13 @@ async function query (pid, callback) {
   // TODO: Handle error cases with proper callback
   let json;
 
-  json = await fetch('https://cn.dataone.org/cn/v2/query/solr/?q=id:"' + pid + '"&fl=title&wt=json')
+  json = await fetch('https://cn.dataone.org/cn/v2/query/solr/?q=id:"' + pid + '"&fl=title,origin&wt=json')
     .then(res => res.json())
     .then(json => callback(json));
   
   return json;
 }
+
 /**
  * Create a <script> element with Schema.org/Dataset JSON-LD in it
  * 
@@ -40,6 +41,34 @@ async function query (pid, callback) {
  * @returns {string} TODO
  */
 function buildDatasetScriptTag (json) {
+  var metaTagString = "";
+
+  // Fail out fast, but gracefully!, if the JSON we're passed isn't right
+  if (
+    !json || !json.response || !json.response.docs
+  ) {
+    console.log(
+      'Unexpected response format, probably indicating a ' +
+      'malformed query. Response is ' + 
+      JSON.stringify(json)
+    );
+
+    return '';
+  }
+
+  if (json.response.docs.length !== 1) {
+    console.log(
+      'Expected a single Solr document as a result but got ' + 
+      json.response.docs.length + 
+      ' instead. Response is: ' + 
+      JSON.stringify(json)
+    );
+    
+    return '';
+  }
+
+  const doc = json.response.docs[0];
+
   // TODO: Publish all properties
   // TODO: Make resilient to errors
   const jsonld = {
@@ -47,14 +76,27 @@ function buildDatasetScriptTag (json) {
       "@vocab": "http://schema.org"
     },
     "@type": "Dataset",
-    "@id": "https://dataone.org/datasets/test",
-    "name": json.response.docs[0].title
+    "@id": "https://dataone.org/datasets/test"
   }
 
-  return '<script type="application/ld+json">' + 
+  if (doc.title) {
+    jsonld['title'] = doc.title;
+    metaTagString += '<meta name="citation_title" content="' + doc.title + '" />;'
+  }
+
+  if (doc.origin) {
+    const originString = doc.origin.join(', '); //TODO
+    jsonld['creator'] = originString;
+    metaTagString += '<meta name="citation_author" content="' + doc.title + '" />;'
+  }
+
+  return metaTagString + 
+    '<script type="application/ld+json">' + 
     JSON.stringify(jsonld) + 
     '</script>';
 }
+
+
 /**
  * Dynamically generate the appropriate response to send back to the client
  * 
