@@ -23,6 +23,7 @@
   "homepage": "https://github.com/NCEAS/metacatui#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "express-yields": "^1.1.2",
     "fetch": "^1.1.0",
     "mustache": "^2.3.2",
     "node-fetch": "^2.2.0"
