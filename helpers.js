@@ -2,15 +2,40 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
+const { DOMParser } = require('xmldom');
+
+const { generateJSONLD } = require("./schemaorg.js");
 
 // Pre-calculate stuff that doesn't change from request to request
 const datasetRegex = RegExp('.*\/view\/.+');
 const template = fs.readFileSync(path.resolve(__dirname, "src", "index.html")).toString();
 const parts = template.split("</head>");
 
+let nodeList = []; // Fulfilled by loadNodeList, kinda hacky but it works
+loadNodeList(); // Async btw
+
 // Pre-flight to make sure things are okay
 assert(template.length > 0);
 assert(parts.length == 2);
+
+async function loadNodeList () {
+  let response = await fetch('https://search.dataone.org/cn/v2/node');
+  let text = await response.text();
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(text, "application/xml");
+  var nodeEls = doc.getElementsByTagName('node');
+
+  let nodes = [];
+
+  for (let i = 0; i < nodeEls.length; i++) {
+    nodes.push({
+      id: nodeEls.item(i).getElementsByTagName('identifier')[0].textContent,
+      name: nodeEls.item(i).getElementsByTagName('name')[0].textContent
+    })
+  }
+  
+  nodeList = nodes;
+}
 
 /**
  * Fetch the data from the Solr index needed to generate JSONLD for the given
@@ -26,7 +51,7 @@ async function query (pid, callback) {
   // TODO: Handle error cases with proper callback
   let json;
 
-  json = await fetch('https://cn.dataone.org/cn/v2/query/solr/?q=id:"' + pid + '"&fl=title,origin&wt=json')
+  json = await fetch('https://cn.dataone.org/cn/v2/query/solr/?q=id:"' + pid + '"&fl=*&wt=json')
     .then(res => res.json())
     .then(json => callback(json));
   
@@ -71,24 +96,7 @@ function buildDatasetScriptTag (json) {
 
   // TODO: Publish all properties
   // TODO: Make resilient to errors
-  const jsonld = {
-    "@context": {
-      "@vocab": "http://schema.org"
-    },
-    "@type": "Dataset",
-    "@id": "https://dataone.org/datasets/test"
-  }
-
-  if (doc.title) {
-    jsonld['title'] = doc.title;
-    metaTagString += '<meta name="citation_title" content="' + doc.title + '" />;'
-  }
-
-  if (doc.origin) {
-    const originString = doc.origin.join(', '); //TODO
-    jsonld['creator'] = originString;
-    metaTagString += '<meta name="citation_author" content="' + doc.title + '" />;'
-  }
+  const jsonld = generateJSONLD(doc, nodeList);
 
   return metaTagString + 
     '<script type="application/ld+json">' + 

@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "TODO",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -11,6 +12,10 @@
     "express": "^4.16.3",
     "express-yields": "^1.1.2",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.2.0"
+    "node-fetch": "^2.2.0",
+    "xmldom": "^0.1.27"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
   }
 }
