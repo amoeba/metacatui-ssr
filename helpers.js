@@ -43,11 +43,14 @@ async function loadNodeList () {
  * Fetch the data from the Solr index needed to generate JSONLD for the given
  * Identifier
  * 
- * @param  {string} pid - Identifier of the dataset to query the Solr index for
- * @param  {function} callback - Callback function to convert the Solr response
- *  (JSON) to Schema.org JSONLD
+ * Note that this function enforces a timeout equal to QUERY_TIMEOUT and, if
+ * the timeout is hit returns null which causes the server to respond with 
+ * the template HTML with no script tag.
  * 
- * @returns {string} TODO
+ * @param  {string} identifier - Identifier of the dataset to query the Solr
+ *   about
+ * 
+ * @returns {Object} Solr response
  */
 async function query (identifier) {
   return await fetch(
@@ -117,9 +120,9 @@ function buildDatasetScriptTag (json) {
 /**
  * Dynamically generate the appropriate response to send back to the client
  * 
- * @param  {string} path - TODO
+ * @param  {Express.req} req - The raw Express.js request object
  * 
- * @returns TODO
+ * @returns {string} Optionally modified template HTML as a string
  */
 async function generateResponse (req) {
   const path = req.path;
