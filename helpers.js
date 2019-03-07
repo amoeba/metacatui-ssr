@@ -3,10 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
 const { DOMParser } = require('xmldom');
+const urlencode = require('urlencode');
 
 const { generateJSONLD } = require("./schemaorg.js");
 
 // Pre-calculate stuff that doesn't change from request to request
+const QUERY_TIMEOUT = 3000; // In ms, timeout for Solr queries
 const datasetRegex = RegExp('.*\/view\/.+');
 const template = fs.readFileSync(path.resolve(__dirname, "src", "index.html")).toString();
 const parts = template.split("</head>");
@@ -47,15 +49,22 @@ async function loadNodeList () {
  * 
  * @returns {string} TODO
  */
-async function query (pid, callback) {
-  // TODO: Handle error cases with proper callback
-  let json;
+async function query (identifier) {
+  return await fetch(
+    'https://search.dataone.org/cn/v2/query/solr/?q=id:"' + identifier + '"&fl=*&wt=json',
+    { "timeout" : QUERY_TIMEOUT })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return null;
+      }
+    })
+    .catch(err => {
+      console.log('error in query()', err);
 
-  json = await fetch('https://cn.dataone.org/cn/v2/query/solr/?q=id:"' + pid + '"&fl=*&wt=json')
-    .then(res => res.json())
-    .then(json => callback(json));
-  
-  return json;
+      return null;
+    });
 }
 
 /**
@@ -129,9 +138,16 @@ async function generateResponse (req) {
   }
 
   const pid = urlencode.decode(path_parts[1]); // Decoded just in case
+  const solrResult = await query(pid);
+
+  if (!solrResult) {
+    return template;
+  }
+
+  const tagText = await buildDatasetScriptTag(solrResult);
 
   return parts[0] + 
-    query_result + 
+    tagText + 
     "</head>" + 
     parts[1];
 }
