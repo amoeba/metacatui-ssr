@@ -11,9 +11,7 @@ const helpers = require('./helpers');
 const port = process.env.PORT || 3000;
 
 app.get('*', async (req, res) => {
-  const path = req._parsedOriginalUrl.path;
-
-  const response = await helpers.generateResponse(path);
+  const response = await helpers.generateResponse(req);
   await res.send(response);
 });
 

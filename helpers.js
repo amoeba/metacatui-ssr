@@ -112,11 +112,15 @@ function buildDatasetScriptTag (json) {
  * 
  * @returns TODO
  */
-async function generateResponse (path) {
+async function generateResponse (req) {
+  const path = req.path;
+
   if (!datasetRegex.test(path)) {
     return template;
   }
 
+  // Parse the URL path in a way that's safe even if the path parts aren't
+  // properly URL-encoded
   const path_parts = path.split("/view/")
 
   // Fall back to returning the template if we don't parse a PID from the path
@@ -124,8 +128,7 @@ async function generateResponse (path) {
     return template;
   }
 
-  const pid = path_parts[1];
-  const query_result = await query(pid, buildDatasetScriptTag);
+  const pid = urlencode.decode(path_parts[1]); // Decoded just in case
 
   return parts[0] + 
     query_result + 
