@@ -20,7 +20,7 @@ function generateJSONLD (doc, nodeList) {
   }
 
   if (doc.formatId) {
-    jsonld['formatId'] = doc.formatId
+    jsonld['schemaVersion'] = doc.formatId
   }
 
   if (doc.pubDate || doc.dateUploaded) {
